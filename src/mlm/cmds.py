@@ -199,7 +199,7 @@ def cmd_score(args: argparse.Namespace) -> None:
     if isinstance(model, nlp.model.BERTModel):
         # GluonNLP
         scorer = MLMScorer(model, vocab, tokenizer, eos=args.eos, wwm=args.whole_word_mask, capitalize=args.capitalize, ctxs=ctxs)
-    elif isinstance(model, transformers.XLMWithLMHeadModel) or isinstance(model, transformers.BertForMaskedLM) or isinstance(model, transformers.AutoModelWithLMHead) or isinstance(model, BertForMaskedLMOptimized):
+    elif isinstance(model, transformers.XLMWithLMHeadModel) or isinstance(model, transformers.BertForMaskedLM) or isinstance(model, transformers.RobertaForMaskedLM) or isinstance(model, BertForMaskedLMOptimized):
         # Transformers
         scorer = MLMScorerPT(model, vocab, tokenizer, eos=args.eos, wwm=args.whole_word_mask, capitalize=args.capitalize, ctxs=ctxs, lang=args.tgt)
     elif isinstance(model, BERTRegression):
