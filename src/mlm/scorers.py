@@ -126,7 +126,7 @@ class BaseScorer(ABC):
             # See In[21] in https://jakevdp.github.io/PythonDataScienceHandbook/02.07-fancy-indexing.html.
             # Hence, aggregation is done synchronously, every so often
             # (though batch_score_accumulation = 1 seems best, since bucketing is effective in reducing GPU disparity)
-            if len(batch_sent_idxs_per_ctx[0]) == batch_score_accumulation:   
+            if len(batch_sent_idxs_per_ctx[0]) == batch_score_accumulation:
                 sum_accumulated_scores()
 
             # Progress
@@ -237,7 +237,7 @@ class LMBinner(LMScorer):
             # out is ((batch size, max_seq_len, vocab size), new states)
             out = self._model(token_ids)
             out = out[0].log_softmax(temperature=temp)
-          
+
             for i in range(out.shape[0]):
                 # Get scores ignoring our version of CLS and SEP (the '<|endoftext|>')
                 # Recall that the softmaxes here are for predicting the >>next<< token
@@ -492,7 +492,7 @@ masked_id = {}
             # See In[21] in https://jakevdp.github.io/PythonDataScienceHandbook/02.07-fancy-indexing.html.
             # Hence, aggregation is done synchronously, every so often
             # (though batch_score_accumulation = 1 seems best, since bucketing is effective in reducing GPU disparity)
-            if len(batch_sent_idxs_per_ctx[0]) == batch_score_accumulation:   
+            if len(batch_sent_idxs_per_ctx[0]) == batch_score_accumulation:
                 sum_accumulated_scores()
 
             # Progress
@@ -618,7 +618,7 @@ class MLMScorerPT(BaseScorer):
         dataloader = nlp.data.ShardedDataLoader(dataset, batch_sampler=batch_sampler, batchify_fn=batchify_fn)
 
         # Compute scores
-        scores = np.zeros((len(corpus),)) 
+        scores = np.zeros((len(corpus),))
         scores_per_ctx = [mx.nd.zeros((len(corpus),), ctx=ctx) for ctx in self._ctxs]
 
         # Compute sum (assumes dataset is in order)
@@ -694,6 +694,15 @@ class MLMScorerPT(BaseScorer):
                         # out[0] is what contains the distribution for the masked (batch_size, sequence_length, config.vocab_size)
                         # Reindex to only get the distributions at the masked positions (batch_size, config.vocab_size)
                         out = out[0][list(range(split_size)),masked_positions.reshape(-1),:]
+                    elif isinstance(self._model.module, transformers.RobertaForMaskedLM):
+                        # Because BERT does not take a length parameter
+                        alen = torch.arange(token_ids.shape[1], dtype=torch.long)
+                        alen = alen.to(ctx)
+                        mask = alen < valid_length[:, None]
+                        out = self._model(input_ids=token_ids, attention_mask=mask)
+                        # out[0] is what contains the distribution for the masked (batch_size, sequence_length, config.vocab_size)
+                        # Reindex to only get the distributions at the masked positions (batch_size, config.vocab_size)
+                        out = out[0][list(range(split_size)),masked_positions.reshape(-1),:]
                     else:
                         raise ValueError
 
@@ -713,7 +722,7 @@ class MLMScorerPT(BaseScorer):
             # See In[21] in https://jakevdp.github.io/PythonDataScienceHandbook/02.07-fancy-indexing.html.
             # Hence, aggregation is done synchronously, every so often
             # (though batch_score_accumulation = 1 seems best, since bucketing is effective in reducing GPU disparity)
-            if len(batch_sent_idxs_per_ctx[0]) == batch_score_accumulation:   
+            if len(batch_sent_idxs_per_ctx[0]) == batch_score_accumulation:
                 sum_accumulated_scores()
 
             # Progress
@@ -874,7 +883,7 @@ class RegressionFinetuner(BaseScorer):
                 loss = self._loss(out, scores).sum()
 
                 losses.append(loss)
-            
+
             for loss in losses:
                 loss.backward()
 
