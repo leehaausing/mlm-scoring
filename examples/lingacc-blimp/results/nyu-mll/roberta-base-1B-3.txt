@@ -1,0 +1,81 @@
+0.796 (796/1000) - adjunct_island
+0.991 (991/1000) - anaphor_gender_agreement
+0.981 (981/1000) - anaphor_number_agreement
+0.762 (762/1000) - animate_subject_passive
+0.848 (848/1000) - animate_subject_trans
+0.836 (836/1000) - causative
+0.501 (501/1000) - complex_NP_island
+0.780 (780/1000) - coordinate_structure_constraint_complex_left_branch
+0.901 (901/1000) - coordinate_structure_constraint_object_extraction
+0.979 (979/1000) - determiner_noun_agreement_1
+0.996 (996/1000) - determiner_noun_agreement_2
+0.862 (862/1000) - determiner_noun_agreement_irregular_1
+0.988 (988/1000) - determiner_noun_agreement_irregular_2
+0.979 (979/1000) - determiner_noun_agreement_with_adj_2
+0.883 (883/1000) - determiner_noun_agreement_with_adj_irregular_1
+0.962 (962/1000) - determiner_noun_agreement_with_adj_irregular_2
+0.974 (974/1000) - determiner_noun_agreement_with_adjective_1
+0.892 (892/1000) - distractor_agreement_relational_noun
+0.806 (806/1000) - distractor_agreement_relative_clause
+0.757 (757/1000) - drop_argument
+0.885 (885/1000) - ellipsis_n_bar_1
+0.938 (938/1000) - ellipsis_n_bar_2
+0.697 (697/1000) - existential_there_object_raising
+0.958 (958/1000) - existential_there_quantifiers_1
+0.176 (176/1000) - existential_there_quantifiers_2
+0.893 (893/1000) - existential_there_subject_raising
+0.738 (738/1000) - expletive_it_object_raising
+0.751 (751/1000) - inchoative
+0.771 (771/1000) - intransitive
+0.955 (955/1000) - irregular_past_participle_adjectives
+0.940 (940/1000) - irregular_past_participle_verbs
+0.918 (918/1000) - irregular_plural_subject_verb_agreement_1
+0.862 (862/1000) - irregular_plural_subject_verb_agreement_2
+0.332 (332/1000) - left_branch_island_echo_question
+0.905 (905/1000) - left_branch_island_simple_question
+0.907 (907/1000) - matrix_question_npi_licensor_present
+0.767 (767/1000) - npi_present_1
+0.782 (782/1000) - npi_present_2
+0.997 (997/1000) - only_npi_licensor_present
+0.580 (580/1000) - only_npi_scope
+0.735 (735/1000) - passive_1
+0.823 (823/1000) - passive_2
+0.594 (594/1000) - principle_A_c_command
+0.998 (998/1000) - principle_A_case_1
+0.975 (975/1000) - principle_A_case_2
+0.960 (960/1000) - principle_A_domain_1
+0.829 (829/1000) - principle_A_domain_2
+0.852 (852/1000) - principle_A_domain_3
+0.284 (284/1000) - principle_A_reconstruction
+0.951 (951/1000) - regular_plural_subject_verb_agreement_1
+0.943 (943/1000) - regular_plural_subject_verb_agreement_2
+0.976 (976/1000) - sentential_negation_npi_licensor_present
+0.772 (772/1000) - sentential_negation_npi_scope
+0.445 (445/1000) - sentential_subject_island
+0.881 (881/1000) - superlative_quantifiers_1
+0.806 (806/1000) - superlative_quantifiers_2
+0.605 (605/1000) - tough_vs_raising_1
+0.925 (925/1000) - tough_vs_raising_2
+0.853 (853/1000) - transitive
+0.660 (660/1000) - wh_island
+0.845 (845/1000) - wh_questions_object_gap
+0.932 (932/1000) - wh_questions_subject_gap
+0.789 (789/1000) - wh_questions_subject_gap_long_distance
+0.979 (979/1000) - wh_vs_that_no_gap
+0.971 (971/1000) - wh_vs_that_no_gap_long_distance
+0.747 (747/1000) - wh_vs_that_with_gap
+0.554 (554/1000) - wh_vs_that_with_gap_long_distance
+# of files: 67
+anaphor_agreement:  0.986
+argument_structure:  0.7928888888888888
+binding:  0.7845714285714286
+control_raising:  0.7716
+determiner:  0.952875
+ellipsis:  0.9115
+filler_gap:  0.8310000000000001
+irregular_forms:  0.9475
+island_effects:  0.665
+npi_licensing:  0.8258571428571428
+quantifiers:  0.7052499999999999
+subject_verb_agreement:  0.8953333333333333
+overall:  0.8195522388059701
