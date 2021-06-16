@@ -123,7 +123,7 @@ def get_pretrained(ctxs: List[mx.Context], name: str = 'bert-base-en-uncased', p
         elif model_fullname.startswith('/scratch/xl3119'):
 
             model = transformers.AutoModelWithLMHead.from_pretrained(model_fullname)
-            tokenizer = transformers.AutoTokenizer.from_pretrained(model_fullname)
+            tokenizer = transformers.AutoTokenizer.from_pretrained('roberta-base')
             vocab = None
 
         else:
