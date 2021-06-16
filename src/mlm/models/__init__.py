@@ -120,6 +120,18 @@ def get_pretrained(ctxs: List[mx.Context], name: str = 'bert-base-en-uncased', p
             tokenizer = transformers.AutoTokenizer.from_pretrained(model_fullname)
             vocab = None
 
+        elif model_fullname.startswith('filtered'):
+
+            model = transformers.AutoModelWithLMHead.from_pretrained(model_fullname)
+            tokenizer = transformers.AutoTokenizer.from_pretrained(model_fullname)
+            vocab = None
+
+        elif model_fullname.startswith('unfiltered'):
+
+            model = transformers.AutoModelWithLMHead.from_pretrained(model_fullname)
+            tokenizer = transformers.AutoTokenizer.from_pretrained(model_fullname)
+            vocab = None
+
         else:
             raise ValueError("Model '{}' is not currently a supported PyTorch model".format(name))
 
